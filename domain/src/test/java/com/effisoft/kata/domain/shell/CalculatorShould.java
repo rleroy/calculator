@@ -102,5 +102,4 @@ public class CalculatorShould {
 
         Assert.assertEquals("42", result);
     }
-
 }
