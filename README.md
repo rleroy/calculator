@@ -3,6 +3,12 @@
 
 ## The Application
 
+The application is a simple console calculator.
+You can run it using the command "java -jar".
+Operations are read from the console input and results sent to the console output.
+
+## The code
+
 This project is organized into 2 submodules following an hexagonal architecture :
 
 - http://alistair.cockburn.us/Hexagonal+architecture
