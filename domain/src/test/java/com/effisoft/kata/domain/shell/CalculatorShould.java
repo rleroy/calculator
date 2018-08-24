@@ -95,4 +95,12 @@ public class CalculatorShould {
 
         Assert.assertEquals("0", result);
     }
+
+    @Test
+    public void compute_6_mult_7_into_42() {
+        String result = calculator.compute("6*7");
+
+        Assert.assertEquals("42", result);
+    }
+
 }

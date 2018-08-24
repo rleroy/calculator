@@ -1,9 +1,6 @@
 package com.effisoft.kata.domain.shell;
 
-import com.effisoft.kata.domain.core.AddiService;
-import com.effisoft.kata.domain.core.OperationException;
-import com.effisoft.kata.domain.core.OperationService;
-import com.effisoft.kata.domain.core.SubsService;
+import com.effisoft.kata.domain.core.*;
 import org.apache.log4j.Logger;
 
 import java.util.Optional;
@@ -30,7 +27,8 @@ public class Calculator implements Runnable {
 
         this.services = Stream.of(
             new AddiService(),
-            new SubsService()
+            new SubsService(),
+            new MultService()
         ).collect(Collectors.toSet());
     }
 
