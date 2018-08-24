@@ -50,7 +50,7 @@ public class MultService extends OperationService<Integer> {
     }
 
     private Integer tryComputeUnixSh(Integer val1, Integer val2) {
-        String[] commands = {"echo", "$((" + val1 + "*" + val2 + "))"};
+        String[] commands = {"bash", "-c", "echo", "$((" + val1 + "*" + val2 + "))"};
         return tryCompute(commands);
     }
 
