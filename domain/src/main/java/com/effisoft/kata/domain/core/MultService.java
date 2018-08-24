@@ -65,7 +65,7 @@ public class MultService extends OperationService<Integer> {
             }
             logger.info("process "+commands[0]+" succeeded, it was a " + process.getClass().getCanonicalName());
         } catch (IOException | InterruptedException | NoSuchElementException e) {
-            logger.debug(e.getMessage(), e);
+            logger.debug(e.getMessage());
         }
         return result;
     }
