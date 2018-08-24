@@ -6,6 +6,7 @@ import com.effisoft.kata.domain.core.OperationService;
 import com.effisoft.kata.domain.core.SubsService;
 import org.apache.log4j.Logger;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
@@ -50,6 +51,18 @@ public class Calculator implements Runnable {
     }
 
     String compute(String operation) {
+        String response;
+        Optional<String> result = storage.retrieve(operation);
+        if (result.isPresent()) {
+            response = result.get();
+        } else {
+            response = this.computeOnServices(operation);
+            storage.store(operation, response);
+        }
+        return response;
+    }
+
+    String computeOnServices(String operation) {
         String result = "???";
 
         for (OperationService<Integer> service : services) {

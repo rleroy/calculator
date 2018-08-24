@@ -1,5 +1,6 @@
 package com.effisoft.kata.domain.shell;
 
+import com.effisoft.kata.domain.core.DefaultStorage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ public class CalculatorShould {
 
     private LinkedList<String> inputData;
     private LinkedList<String> outputData;
+    private CalculatorStorage storage;
     private Calculator calculator;
 
     @Before
@@ -18,7 +20,9 @@ public class CalculatorShould {
         inputData = new LinkedList<>();
         outputData = new LinkedList<>();
 
-        CalculatorStorage storage = Mockito.mock(CalculatorStorage.class);
+        DefaultStorage.getInstance().reset();
+        storage = Mockito.spy(new CalculatorStorage() {});
+
         calculator = Mockito.spy(new Calculator(inputData::removeFirst, outputData::addLast, storage));
     }
 
@@ -57,7 +61,7 @@ public class CalculatorShould {
     }
 
     @Test
-    public void write_reponses_to_output() throws InterruptedException {
+    public void write_responses_to_output() throws InterruptedException {
         inputData.add("3+2");
         inputData.add("exit");
 
@@ -66,6 +70,23 @@ public class CalculatorShould {
         thread.join();
 
         Assert.assertEquals("5", outputData.removeFirst());
+    }
+
+    @Test
+    public void store_operation_result() {
+        calculator.compute("1+1");
+
+        Mockito.verify(storage, Mockito.times(1)).store("1+1", "2");
+    }
+
+    @Test
+    public void compute_operation_only_once() {
+        calculator.compute("1+1");
+        calculator.compute("1+1");
+
+        Mockito.verify(calculator, Mockito.times(1)).computeOnServices("1+1");
+        Mockito.verify(storage, Mockito.times(1)).store("1+1", "2");
+        Mockito.verify(storage, Mockito.times(2)).retrieve("1+1");
     }
 
     @Test
