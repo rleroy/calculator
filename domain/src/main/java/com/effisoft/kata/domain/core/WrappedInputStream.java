@@ -2,25 +2,21 @@ package com.effisoft.kata.domain.core;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class WrappedInputStream extends InputStream {
 
-    private final static List<WrappedInputStream> ALL_INSTANCES = new ArrayList<>();
+    private final static AtomicInteger OPEN_STREAM_COUNT = new AtomicInteger(0);
 
     static long countOpenStreams() {
-        return ALL_INSTANCES.stream()
-            .filter(WrappedInputStream::isOpen)
-            .count();
+        return OPEN_STREAM_COUNT.get();
     }
 
     private InputStream input;
-    private boolean open = true;
 
     WrappedInputStream(InputStream inputStream) {
         this.input = inputStream;
-        ALL_INSTANCES.add(this);
+        OPEN_STREAM_COUNT.incrementAndGet();
     }
 
     @Override
@@ -30,11 +26,7 @@ class WrappedInputStream extends InputStream {
 
     @Override
     public void close() throws IOException {
-        open = false;
         input.close();
-    }
-
-    private boolean isOpen() {
-        return this.open;
+        OPEN_STREAM_COUNT.decrementAndGet();
     }
 }
