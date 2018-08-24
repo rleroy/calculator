@@ -9,6 +9,6 @@ public class MultServiceShould {
     public void close_all_process_input_streams_properly() {
         MultService service = new MultService();
         service.compute(12, 2);
-        Assert.assertEquals(0, service.countOpenStreams());
+        Assert.assertEquals(0, WrappedInputStream.countOpenStreams());
     }
 }
