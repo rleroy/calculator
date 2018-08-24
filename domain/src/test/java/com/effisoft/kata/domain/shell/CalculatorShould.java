@@ -67,4 +67,11 @@ public class CalculatorShould {
 
         Assert.assertEquals("5", outputData.removeFirst());
     }
+
+    @Test
+    public void compute_1_minus_1_into_0() {
+        String result = calculator.compute("1-1");
+
+        Assert.assertEquals("0", result);
+    }
 }
