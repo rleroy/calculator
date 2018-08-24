@@ -7,7 +7,7 @@ public abstract class OperationService<T> {
 
     private Pattern pattern;
 
-    OperationService(String regex) {
+    protected OperationService(String regex) {
         pattern = Pattern.compile(regex);
     }
 

@@ -1,12 +1,18 @@
 package com.effisoft.kata.domain.shell;
 
 import com.effisoft.kata.domain.core.DefaultStorage;
+import com.effisoft.kata.domain.core.OperationService;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.LinkedList;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CalculatorShould {
 
@@ -102,4 +108,47 @@ public class CalculatorShould {
 
         Assert.assertEquals("42", result);
     }
+
+    @Test
+    public void calculate_42_div_6_is_7() {
+        String result = calculator.compute("42/6");
+
+        Assert.assertEquals("7", result);
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    @Ignore
+    public void not_allow_service_addition() {
+        calculator.services.add(new OperationService<Integer>("([0-9]*)^([0-9]*)") {
+            @Override
+            public Integer compute(Integer val1, Integer val2) {
+                return null;
+            }
+        });
+    }
+
+    @Test
+    public void store_all_operations() {
+        calculator.compute("2+3");
+        calculator.compute("2-3");
+        calculator.compute("2*3");
+        calculator.compute("2/3");
+
+        Set<String> actual = Stream.of(
+            calculator.storage.retrieve("2+3"),
+            calculator.storage.retrieve("2-3"),
+            calculator.storage.retrieve("2*3"),
+            calculator.storage.retrieve("2/3")
+        )
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .collect(Collectors.toSet())
+            ;
+
+        Set<String> expected = Stream.of("5", "-1", "6", "0")
+            .collect(Collectors.toSet());
+
+        Assert.assertEquals(expected, actual);
+    }
+
 }

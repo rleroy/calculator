@@ -15,20 +15,28 @@ public class Calculator implements Runnable {
 
     private CalculatorInput input;
     private CalculatorOutput output;
-    private CalculatorStorage storage;
+    CalculatorStorage storage;
 
     Throwable error = null;
-    private Set<OperationService<Integer>> services;
+    Set<OperationService<Integer>> services;
 
     public Calculator(CalculatorInput input, CalculatorOutput output, CalculatorStorage storage) {
         this.input = input;
         this.output = output;
         this.storage = storage;
 
+        OperationService<Integer> div = new OperationService<Integer>("([0-9]*)/([0-9]*)") {
+            @Override
+            public Integer compute(Integer val1, Integer val2) {
+                return val1 / val2;
+            }
+        };
+
         this.services = Stream.of(
             new AddiService(),
             new SubsService(),
-            new MultService()
+            new MultService(),
+            div
         ).collect(Collectors.toSet());
     }
 
