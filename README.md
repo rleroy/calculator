@@ -38,6 +38,7 @@ During this process we will discover some new features introduced in JDK9, JDK10
 ### Steps
 
 - [ ] Build the project using JDK11.
+- [ ] Handle JAXB removal.
 - [ ] Hide domain core package using the new Module System (JDK9 - JEP 261).
 - [ ] Use the new process API (JDK9 - JEP 102).
 - [ ] Use variables in the try-with-resources statement (JDK9 - JEP 213).
