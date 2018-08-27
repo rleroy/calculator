@@ -39,13 +39,13 @@ During this process we will discover some new features introduced in JDK9, JDK10
 
 - [ ] Build the project using JDK11.
 - [ ] Handle JAXB removal.
-- [ ] Hide domain core package using the new Module System (JDK9 - JEP 261).
+- [ ] Hide domain.core package from infra module using the new Module System (JDK9 - JEP 261).
 - [ ] Use the new process API (JDK9 - JEP 102).
 - [ ] Use variables in the try-with-resources statement (JDK9 - JEP 213).
-- [ ] Use diamond operator in conjunction with anonymous inner classes (JDK9 - JEP ???).
-- [ ] Add an interface private method (JDK9 - JEP ???).
-- [ ] Create an immutable Set (JDK9 - JEP ???).
-- [ ] Stream optionals (JDK9 - JEP ???).
-- [ ] Use the new Flow API (JDK9 - JEP ???).
+- [ ] Use diamond operator in conjunction with anonymous inner classes (JDK9 - JEP 213).
+- [ ] Add an interface private method (JDK9 - JEP 213).
+- [ ] Create an immutable Set (JDK9 - JEP 269).
+- [ ] Stream optionals (JDK9 - JEP 269).
+- [ ] Use the new Flow API (JDK9 - JEP 266).
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
