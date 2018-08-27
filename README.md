@@ -35,10 +35,15 @@ This modules contains the "infrastructure" part of the application and is separa
 The aim of this kata is to migrate this simple application from JDK8 to JDK11.
 During this process we will discover some new features introduced in JDK9, JDK10 and JDK11.
 
-### Steps
+References :
+- http://openjdk.java.net/projects/jdk9/
+- http://openjdk.java.net/projects/jdk/10/
+- http://openjdk.java.net/projects/jdk/11/
+
+### Checklist
 
 - [ ] Build the project using JDK11.
-- [ ] Handle JAXB removal.
+- [ ] Handle JAXB removal (JDK11 - JEP 320).
 - [ ] Hide domain.core package from infra module using the new Module System (JDK9 - JEP 261).
 - [ ] Use the new process API (JDK9 - JEP 102).
 - [ ] Use variables in the try-with-resources statement (JDK9 - JEP 213).
@@ -49,3 +54,8 @@ During this process we will discover some new features introduced in JDK9, JDK10
 - [ ] Use the new Flow API (JDK9 - JEP 266).
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
+
+### Step 1 : build
+
+Your fist goal will be to build the project using JDK11.
+Install it, run `mvn clean install` and see what needs to be fixed.
