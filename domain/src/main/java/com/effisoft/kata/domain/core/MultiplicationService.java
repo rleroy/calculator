@@ -8,11 +8,11 @@ import java.io.InputStreamReader;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-public class MultService extends OperationService<Integer> {
+public class MultiplicationService extends OperationService<Integer> {
 
-    private static Logger logger = Logger.getLogger(MultService.class);
+    private static Logger logger = Logger.getLogger(MultiplicationService.class);
 
-    public MultService() {
+    public MultiplicationService() {
         super("([0-9]*)\\*([0-9]*)");
     }
 

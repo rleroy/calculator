@@ -33,9 +33,9 @@ public class Calculator implements Runnable {
         };
 
         this.services = Stream.of(
-            new AddiService(),
-            new SubsService(),
-            new MultService(),
+            new AdditionService(),
+            new SubtractionService(),
+            new MultiplicationService(),
             div
         ).collect(Collectors.toSet());
     }
