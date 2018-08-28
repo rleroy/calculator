@@ -42,8 +42,8 @@ References :
 
 ### Checklist
 
-- [ ] Build the project using JDK11.
-- [ ] Handle JAXB removal (JDK11 - JEP 320).
+- [x] Build the project using JDK11.
+- [x] Handle JAXB removal (JDK11 - JEP 320).
 - [ ] Hide domain.core package from infra module using the new Module System (JDK9 - JEP 261).
 - [ ] Use the new process API (JDK9 - JEP 102).
 - [ ] Use variables in the try-with-resources statement (JDK9 - JEP 213).
@@ -55,7 +55,9 @@ References :
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
 
-### Step 1 : build
+### Step 2 : use the new module system to protect external access to domain.core package.
 
-Your fist goal will be to build the project using JDK11.
-Install it, run `mvn clean install` and see what needs to be fixed.
+The test in class ConsoleCalculatorShould is accessing a class inside domain.code package.
+This class needs to be public as domain.shell needs to have access to it.
+But we don not want classes outside of the module to have access to it.
+Modules introduced in JDK9 (JEP 261) can do the trick.
