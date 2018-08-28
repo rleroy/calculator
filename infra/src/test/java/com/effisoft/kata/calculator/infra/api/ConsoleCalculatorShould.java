@@ -1,4 +1,4 @@
-package com.effisoft.kata.infra.api;
+package com.effisoft.kata.calculator.infra.api;
 
 import com.effisoft.kata.calculator.domain.core.AdditionService;
 import org.junit.Assert;
