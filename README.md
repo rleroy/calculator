@@ -46,29 +46,23 @@ References :
 - [x] Handle JAXB removal (JDK11 - JEP 320).
 - [x] Hide domain.core package from infra module using the new Module System (JDK9 - JEP 261).
 - [x] Use the new process API (JDK9 - JEP 102).
-- [ ] Use variables in the try-with-resources statement (JDK9 - JEP 213).
-- [ ] Use diamond operator in conjunction with anonymous inner classes (JDK9 - JEP 213).
-- [ ] Add an interface private method (JDK9 - JEP 213).
+- [x] Use variables in the try-with-resources statement (JDK9 - JEP 213).
+- [x] Use diamond operator in conjunction with anonymous inner classes (JDK9 - JEP 213).
+- [x] Add an interface private method (JDK9 - JEP 213).
 - [ ] Create an immutable Set (JDK9 - JEP 269).
 - [ ] Stream optionals (JDK9 - JEP 269).
 - [ ] Use the new Flow API (JDK9 - JEP 266).
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
 
-### Step 4 : Small language changes.
+### Step 5 : collection API improvement.
 
-JEP 213 offers some language improvement you will experiment :
+JEP 269 offers some improvements on collection API you will experiment :
 
-- Use variables in the try-with-resources statement : 
+- Immutable Set : 
 
-In `MultiplicationService.tryCompute` try to extract the inner try.
-This will avoid 2 levels indentation and stress out the exception thrown.
+In the constructor of the `Calculator` the construction of the set of services can me improved.
 
-- Use diamond operator in conjunction with anonymous inner classes :
+- Stream on optionals :
 
-In the constructor of the `Calculator`, the declaration of the division service can now be simplified.
-
-- Add an interface private method :
-
-You can introduce a private method and remove duplication in `CalculatorStorage`.
-
+The test method `CalculatorShould.store_all_operations` can be improved using a stream on optionals.
