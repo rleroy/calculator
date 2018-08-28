@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class SubsService extends OperationService<Integer> {
+public class SubtractionService extends OperationService<Integer> {
 
-    public SubsService() {
+    public SubtractionService() {
         super("([0-9]*)\\-([0-9]*)");
     }
 
