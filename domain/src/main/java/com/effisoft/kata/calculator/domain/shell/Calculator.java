@@ -32,12 +32,12 @@ public class Calculator implements Runnable {
             }
         };
 
-        this.services = Stream.of(
+        this.services = Set.of(
             new AdditionService(),
             new SubtractionService(),
             new MultiplicationService(),
             div
-        ).collect(Collectors.toSet());
+        );
     }
 
     @Override

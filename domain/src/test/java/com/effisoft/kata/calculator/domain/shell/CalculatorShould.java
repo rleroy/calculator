@@ -139,13 +139,11 @@ public class CalculatorShould {
             calculator.storage.retrieve("2*3"),
             calculator.storage.retrieve("2/3")
         )
-            .filter(Optional::isPresent)
-            .map(Optional::get)
+            .flatMap(Optional::stream)
             .collect(Collectors.toSet())
             ;
 
-        Set<String> expected = Stream.of("5", "-1", "6", "0")
-            .collect(Collectors.toSet());
+        Set<String> expected = Set.of("5", "-1", "6", "0");
 
         Assert.assertEquals(expected, actual);
     }
