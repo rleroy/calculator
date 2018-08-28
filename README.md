@@ -57,7 +57,7 @@ References :
 
 ### Step 2 : use the new module system to protect external access to domain.core package.
 
-The test in class ConsoleCalculatorShould is accessing a class inside domain.code package.
-This class needs to be public as domain.shell needs to have access to it.
+The test in class `ConsoleCalculatorShould` is accessing `AdditionService`, a class inside `domain.code` package.
+This class needs to be public as `domain.shell` needs to have access to it.
 But we don not want classes outside of the module to have access to it.
 Modules introduced in JDK9 (JEP 261) can do the trick.
