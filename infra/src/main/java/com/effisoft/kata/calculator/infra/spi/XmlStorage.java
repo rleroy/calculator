@@ -18,7 +18,7 @@ public class XmlStorage implements CalculatorStorage {
 
     private static Logger logger = Logger.getLogger(XmlStorage.class);
 
-    private JAXBContext jaxbContext = JAXBContext.newInstance("com.effisoft.kata.infra.spi.generated");
+    private JAXBContext jaxbContext = JAXBContext.newInstance("com.effisoft.kata.calculator.infra.spi.generated");
     private ObjectFactory objFactory = new ObjectFactory();
     private File datafile = Paths.get("storage.xml").toFile();
 
