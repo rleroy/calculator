@@ -44,7 +44,7 @@ References :
 
 - [x] Build the project using JDK11.
 - [x] Handle JAXB removal (JDK11 - JEP 320).
-- [ ] Hide domain.core package from infra module using the new Module System (JDK9 - JEP 261).
+- [x] Hide domain.core package from infra module using the new Module System (JDK9 - JEP 261).
 - [ ] Use the new process API (JDK9 - JEP 102).
 - [ ] Use variables in the try-with-resources statement (JDK9 - JEP 213).
 - [ ] Use diamond operator in conjunction with anonymous inner classes (JDK9 - JEP 213).
@@ -55,9 +55,8 @@ References :
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
 
-### Step 2 : use the new module system to protect external access to domain.core package.
+### Step 3 : The new process API.
 
-The test in class `ConsoleCalculatorShould` is accessing `AdditionService`, a class inside `domain.code` package.
-This class needs to be public as `domain.shell` needs to have access to it.
-But we don not want classes outside of the module to have access to it.
-Modules introduced in JDK9 (JEP 261) can do the trick.
+The `MultiplicationService` is using a `Process` in order to resolve its operations.
+It also logs which process succeeded or failed (either bash or cmd.exe).
+Using the new process API introduced in JDK9 (JEP 102) you can now retrieve more information about the process. 
