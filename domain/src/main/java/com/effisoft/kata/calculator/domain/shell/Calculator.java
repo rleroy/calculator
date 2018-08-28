@@ -25,7 +25,7 @@ public class Calculator implements Runnable {
         this.output = output;
         this.storage = storage;
 
-        OperationService<Integer> div = new OperationService<Integer>("([0-9]*)/([0-9]*)") {
+        OperationService<Integer> div = new OperationService<>("([0-9]*)/([0-9]*)") {
             @Override
             public Integer compute(Integer val1, Integer val2) {
                 return val1 / val2;
