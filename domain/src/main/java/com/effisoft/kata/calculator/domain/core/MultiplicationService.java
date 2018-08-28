@@ -48,15 +48,21 @@ public class MultiplicationService extends OperationService<Integer> {
         try {
             ProcessBuilder pb = new ProcessBuilder(commands);
             Process process = pb.start();
+            logProcessInfo("", ProcessHandle.current());
             process.waitFor();
             try (BufferedReader out = getProcessOutputReader(process)) {
                 result = readProcessOutput(out);
             }
-            logger.info("process "+commands[0]+" succeeded, it was a " + process.getClass().getCanonicalName());
         } catch (IOException | InterruptedException | NoSuchElementException e) {
             logger.debug(e.getMessage());
         }
         return result;
+    }
+
+    private void logProcessInfo(String name, ProcessHandle handle) {
+        logger.info(name +" "+handle.pid()+" / "+handle.info()+".");
+        handle.descendants()
+            .forEach(h -> logProcessInfo(name + " |--", h));
     }
 
     private BufferedReader getProcessOutputReader(Process process) {
