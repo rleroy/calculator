@@ -46,17 +46,26 @@ public class MultiplicationService extends OperationService<Integer> {
     private Integer tryCompute(String[] commands) {
         Integer result = null;
         try {
-            ProcessBuilder pb = new ProcessBuilder(commands);
-            Process process = pb.start();
-            logProcessInfo("", ProcessHandle.current());
-            process.waitFor();
-            try (BufferedReader out = getProcessOutputReader(process)) {
-                result = readProcessOutput(out);
-            }
-        } catch (IOException | InterruptedException | NoSuchElementException e) {
+            BufferedReader out = runComputationProcess(commands);
+            result = readProcessOutput(out);
+        } catch (IOException | InterruptedException e) {
             logger.debug(e.getMessage());
         }
         return result;
+    }
+
+    private BufferedReader runComputationProcess(String[] commands) throws IOException, InterruptedException {
+        ProcessBuilder pb = new ProcessBuilder(commands);
+        Process process = pb.start();
+        logProcessInfo("", ProcessHandle.current());
+        process.waitFor();
+        return getProcessOutputReader(process);
+    }
+
+    private Integer readProcessOutput(BufferedReader out) throws IOException {
+        try (out) {
+            return Integer.valueOf(out.lines().collect(Collectors.joining()));
+        }
     }
 
     private void logProcessInfo(String name, ProcessHandle handle) {
@@ -73,10 +82,6 @@ public class MultiplicationService extends OperationService<Integer> {
                 )
             )
         );
-    }
-
-    private Integer readProcessOutput(BufferedReader out) {
-        return Integer.valueOf(out.lines().collect(Collectors.joining()));
     }
 
 }
