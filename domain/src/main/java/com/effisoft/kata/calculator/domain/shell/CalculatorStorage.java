@@ -7,11 +7,14 @@ import java.util.Optional;
 public interface CalculatorStorage {
 
     default void store(String operation, String result) {
-        DefaultStorage.getInstance().store(operation, result);
+        getDefaultInstance().store(operation, result);
     }
 
     default Optional<String> retrieve(String operation) {
-        return DefaultStorage.getInstance().retrieve(operation);
+        return getDefaultInstance().retrieve(operation);
     }
 
+    private DefaultStorage getDefaultInstance() {
+        return DefaultStorage.getInstance();
+    }
 }
