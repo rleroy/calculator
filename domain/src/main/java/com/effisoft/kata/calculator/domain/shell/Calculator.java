@@ -1,6 +1,6 @@
-package com.effisoft.kata.domain.shell;
+package com.effisoft.kata.calculator.domain.shell;
 
-import com.effisoft.kata.domain.core.*;
+import com.effisoft.kata.calculator.domain.core.*;
 import org.apache.log4j.Logger;
 
 import java.util.Optional;

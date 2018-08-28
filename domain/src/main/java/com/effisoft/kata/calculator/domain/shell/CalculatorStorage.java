@@ -1,6 +1,6 @@
-package com.effisoft.kata.domain.shell;
+package com.effisoft.kata.calculator.domain.shell;
 
-import com.effisoft.kata.domain.core.DefaultStorage;
+import com.effisoft.kata.calculator.domain.core.DefaultStorage;
 
 import java.util.Optional;
 

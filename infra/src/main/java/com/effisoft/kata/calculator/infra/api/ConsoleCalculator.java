@@ -1,7 +1,7 @@
-package com.effisoft.kata.infra.api;
+package com.effisoft.kata.calculator.infra.api;
 
-import com.effisoft.kata.domain.shell.Calculator;
-import com.effisoft.kata.infra.spi.XmlStorage;
+import com.effisoft.kata.calculator.domain.shell.Calculator;
+import com.effisoft.kata.calculator.infra.spi.XmlStorage;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;

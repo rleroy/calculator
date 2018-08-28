@@ -1,4 +1,4 @@
-package com.effisoft.kata.domain.core;
+package com.effisoft.kata.calculator.domain.core;
 
 import java.io.IOException;
 import java.io.InputStream;

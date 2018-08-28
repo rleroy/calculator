@@ -1,6 +1,6 @@
-package com.effisoft.kata.domain.core;
+package com.effisoft.kata.calculator.domain.core;
 
-import com.effisoft.kata.domain.shell.CalculatorStorage;
+import com.effisoft.kata.calculator.domain.shell.CalculatorStorage;
 
 import java.util.HashMap;
 import java.util.Map;
