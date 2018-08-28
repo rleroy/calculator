@@ -1,6 +1,6 @@
 package com.effisoft.kata.infra.api;
 
-import com.effisoft.kata.domain.core.AdditionService;
+import com.effisoft.kata.calculator.domain.core.AdditionService;
 import org.junit.Assert;
 import org.junit.Test;
 
