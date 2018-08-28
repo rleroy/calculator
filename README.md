@@ -55,14 +55,7 @@ References :
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
 
-### Step 5 : collection API improvement.
+### Step 6 : The Flow API.
 
-JEP 269 offers some improvements on collection API you will experiment :
-
-- Immutable Set : 
-
-In the constructor of the `Calculator` the construction of the set of services can me improved.
-
-- Stream on optionals :
-
-The test method `CalculatorShould.store_all_operations` can be improved using a stream on optionals.
+JEP 266 introduces a flow API.
+You can uses it to improve the readability of method `Calculator.computeOnServices`.
