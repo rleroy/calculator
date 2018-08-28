@@ -25,7 +25,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <packageName>com.effisoft.kata.infra.spi.generated</packageName>
+                    <packageName>com.effisoft.kata.calculator.infra.spi.generated</packageName>
                 </configuration>
             </plugin>
 
@@ -42,7 +42,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>com.effisoft.kata.infra.api.ConsoleCalculator</mainClass>
+                                    <mainClass>com.effisoft.kata.calculator.infra.api.ConsoleCalculator</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

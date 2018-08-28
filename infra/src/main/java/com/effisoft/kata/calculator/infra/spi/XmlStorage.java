@@ -1,9 +1,9 @@
-package com.effisoft.kata.infra.spi;
+package com.effisoft.kata.calculator.infra.spi;
 
-import com.effisoft.kata.domain.shell.CalculatorStorage;
-import com.effisoft.kata.infra.spi.generated.ObjectFactory;
-import com.effisoft.kata.infra.spi.generated.Operation;
-import com.effisoft.kata.infra.spi.generated.Storage;
+import com.effisoft.kata.calculator.domain.shell.CalculatorStorage;
+import com.effisoft.kata.calculator.infra.spi.generated.Operation;
+import com.effisoft.kata.calculator.infra.spi.generated.ObjectFactory;
+import com.effisoft.kata.calculator.infra.spi.generated.Storage;
 import org.apache.log4j.Logger;
 
 import javax.xml.bind.JAXBContext;

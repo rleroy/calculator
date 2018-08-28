@@ -1,4 +1,4 @@
-package com.effisoft.kata.domain.shell;
+package com.effisoft.kata.calculator.domain.shell;
 
 public interface CalculatorOutput {
 
