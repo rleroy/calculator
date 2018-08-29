@@ -51,7 +51,7 @@ References :
 - [x] Add an interface private method (JDK9 - JEP 213).
 - [x] Create an immutable Set (JDK9 - JEP 269).
 - [x] Stream optionals (JDK9 - JEP 269).
-- [ ] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
+- [x] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new Flow API (JDK9 - JEP 266).
 
