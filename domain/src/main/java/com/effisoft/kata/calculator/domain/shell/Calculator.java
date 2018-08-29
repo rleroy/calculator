@@ -25,7 +25,7 @@ public class Calculator implements Runnable {
         this.output = output;
         this.storage = storage;
 
-        OperationService<Integer> div = new OperationService<>("([0-9]*)/([0-9]*)") {
+        var div = new OperationService<Integer>("([0-9]*)/([0-9]*)") {
             @Override
             public Integer compute(Integer val1, Integer val2) {
                 return val1 / val2;
@@ -58,7 +58,7 @@ public class Calculator implements Runnable {
 
     String compute(String operation) {
         String response;
-        Optional<String> result = storage.retrieve(operation);
+        var result = storage.retrieve(operation);
         if (result.isPresent()) {
             response = result.get();
         } else {
@@ -69,10 +69,10 @@ public class Calculator implements Runnable {
     }
 
     String computeOnServices(String operation) {
-        String result = "???";
+        var result = "???";
 
         for (OperationService<Integer> service : services) {
-            Matcher matcher = service.matcher(operation);
+            var matcher = service.matcher(operation);
             if (matcher.matches()) {
                 try {
                     result = String.valueOf(

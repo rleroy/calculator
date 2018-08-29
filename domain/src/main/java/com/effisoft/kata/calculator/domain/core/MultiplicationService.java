@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class MultiplicationService extends OperationService<Integer> {
@@ -20,12 +19,12 @@ public class MultiplicationService extends OperationService<Integer> {
     public Integer compute(Integer val1, Integer val2) {
         Integer result = null;
 
-        Integer unixSh = tryComputeUnixSh(val1, val2);
+        var unixSh = tryComputeUnixSh(val1, val2);
         if (unixSh != null) {
             result = unixSh;
         }
 
-        Integer winCmd = tryComputeWinCmd(val1, val2);
+        var winCmd = tryComputeWinCmd(val1, val2);
         if (winCmd != null) {
             result = winCmd;
         }
@@ -46,7 +45,7 @@ public class MultiplicationService extends OperationService<Integer> {
     private Integer tryCompute(String[] commands) {
         Integer result = null;
         try {
-            BufferedReader out = runComputationProcess(commands);
+            var out = runComputationProcess(commands);
             result = readProcessOutput(out);
         } catch (IOException | InterruptedException e) {
             logger.debug(e.getMessage());
@@ -55,8 +54,8 @@ public class MultiplicationService extends OperationService<Integer> {
     }
 
     private BufferedReader runComputationProcess(String[] commands) throws IOException, InterruptedException {
-        ProcessBuilder pb = new ProcessBuilder(commands);
-        Process process = pb.start();
+        var pb = new ProcessBuilder(commands);
+        var process = pb.start();
         logProcessInfo("", ProcessHandle.current());
         process.waitFor();
         return getProcessOutputReader(process);

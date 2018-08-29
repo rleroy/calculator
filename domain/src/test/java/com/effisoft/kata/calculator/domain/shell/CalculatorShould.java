@@ -36,7 +36,7 @@ public class CalculatorShould {
     public void close_on_exit() throws InterruptedException {
         inputData.push("exit");
 
-        Thread thread = new Thread(calculator);
+        var thread = new Thread(calculator);
         thread.start();
         thread.join();
 
@@ -45,7 +45,7 @@ public class CalculatorShould {
 
     @Test
     public void cause_error_on_empty_input() throws InterruptedException {
-        Thread thread = new Thread(calculator);
+        var thread = new Thread(calculator);
         thread.start();
         thread.join();
 
@@ -54,14 +54,14 @@ public class CalculatorShould {
 
     @Test
     public void compute_1_plus_1_into_2() {
-        String result = calculator.compute("1+1");
+        var result = calculator.compute("1+1");
 
         Assert.assertEquals("2", result);
     }
 
     @Test
     public void compute_45_plus_87_into_132() {
-        String result = calculator.compute("45+87");
+        var result = calculator.compute("45+87");
 
         Assert.assertEquals("132", result);
     }
@@ -71,7 +71,7 @@ public class CalculatorShould {
         inputData.add("3+2");
         inputData.add("exit");
 
-        Thread thread = new Thread(calculator);
+        var thread = new Thread(calculator);
         thread.start();
         thread.join();
 
@@ -97,21 +97,21 @@ public class CalculatorShould {
 
     @Test
     public void compute_1_minus_1_into_0() {
-        String result = calculator.compute("1-1");
+        var result = calculator.compute("1-1");
 
         Assert.assertEquals("0", result);
     }
 
     @Test
     public void compute_6_mult_7_into_42() {
-        String result = calculator.compute("6*7");
+        var result = calculator.compute("6*7");
 
         Assert.assertEquals("42", result);
     }
 
     @Test
     public void calculate_42_div_6_is_7() {
-        String result = calculator.compute("42/6");
+        var result = calculator.compute("42/6");
 
         Assert.assertEquals("7", result);
     }
@@ -133,7 +133,7 @@ public class CalculatorShould {
         calculator.compute("2*3");
         calculator.compute("2/3");
 
-        Set<String> actual = Stream.of(
+        var actual = Stream.of(
             calculator.storage.retrieve("2+3"),
             calculator.storage.retrieve("2-3"),
             calculator.storage.retrieve("2*3"),
@@ -143,7 +143,7 @@ public class CalculatorShould {
             .collect(Collectors.toSet())
             ;
 
-        Set<String> expected = Set.of("5", "-1", "6", "0");
+        var expected = Set.of("5", "-1", "6", "0");
 
         Assert.assertEquals(expected, actual);
     }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ConsoleCalculator {
 
     public static void main(String...args) throws JAXBException, IOException {
-        Calculator calculator = new Calculator(
+        var calculator = new Calculator(
             new Scanner(System.in)::nextLine,
             System.out::println,
             new XmlStorage()

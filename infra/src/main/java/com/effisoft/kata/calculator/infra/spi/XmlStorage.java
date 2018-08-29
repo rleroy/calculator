@@ -31,20 +31,20 @@ public class XmlStorage implements CalculatorStorage {
             }
             storage = objFactory.createStorage();
         } else {
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            var unmarshaller = jaxbContext.createUnmarshaller();
             storage = (Storage) unmarshaller.unmarshal(datafile);
         }
     }
 
     @Override
     public void store(String input, String output) {
-        Operation operation = objFactory.createOperation();
+        var operation = objFactory.createOperation();
         operation.setInput(input);
         operation.setOutput(output);
         storage.getOperation().add(operation);
 
         try {
-            Marshaller marshaller = jaxbContext.createMarshaller();
+            var marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(storage, datafile);
         } catch (JAXBException e) {

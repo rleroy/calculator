@@ -7,7 +7,7 @@ public class MultiplicationServiceShould {
 
     @Test
     public void close_all_process_input_streams_properly() {
-        MultiplicationService service = new MultiplicationService();
+        var service = new MultiplicationService();
         service.compute(12, 2);
         Assert.assertEquals(0, WrappedInputStream.countOpenStreams());
     }

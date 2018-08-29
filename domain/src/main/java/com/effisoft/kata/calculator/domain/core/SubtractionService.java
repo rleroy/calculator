@@ -16,11 +16,11 @@ public class SubtractionService extends OperationService<Integer> {
     @Override
     public Integer compute(Integer val1, Integer val2) throws OperationException {
         try {
-            HttpRequest request = HttpRequest.newBuilder()
+            var request = HttpRequest.newBuilder()
                 .uri(new URI("http://api.mathjs.org/v4/?expr=" + val1 + "-" + val2))
                 .GET()
                 .build();
-            HttpResponse<String> response = HttpClient.newHttpClient()
+            var response = HttpClient.newHttpClient()
                 .send(request, HttpResponse.BodyHandlers.ofString());
             return Integer.valueOf(response.body());
         } catch (URISyntaxException | IOException | InterruptedException e) {
