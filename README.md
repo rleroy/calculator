@@ -52,10 +52,9 @@ References :
 - [x] Create an immutable Set (JDK9 - JEP 269).
 - [x] Stream optionals (JDK9 - JEP 269).
 - [x] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
-- [ ] Local-Variable Type Inference (JDK10 - JEP 286).
+- [x] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new Flow API (JDK9 - JEP 266).
 
-### Step 7 : Local-Variable Type Inference.
+### Step 8 : The new Flow API.
 
-You can now use the keyword `var` to when declaring local variables.
-Refactor the code to use it as much as possible.
+JEP 266 introduces a flow API. You can use it to refactor the `Calculator`.
