@@ -55,9 +55,7 @@ References :
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new Flow API (JDK9 - JEP 266).
 
-### Step 6 : The new HTTP Client API.
+### Step 7 : Local-Variable Type Inference.
 
-JEP 110 introduces a new HTTP Client API in JDK9.
-JEP 321 standardizes it.
-
-You can use it to refactor the `SubtractionService`.
+You can now use the keyword `var` to when declaring local variables.
+Refactor the code to use it as much as possible.
