@@ -51,11 +51,10 @@ References :
 - [x] Add an interface private method (JDK9 - JEP 213).
 - [x] Create an immutable Set (JDK9 - JEP 269).
 - [x] Stream optionals (JDK9 - JEP 269).
-- [ ] Use the new Flow API (JDK9 - JEP 266).
 - [ ] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
+- [ ] Use the new Flow API (JDK9 - JEP 266).
 
-### Step 6 : The Flow API.
+### Step 6 : Local-Variable Type Inference.
 
-JEP 266 introduces a flow API.
-You can uses it to improve the readability of method `Calculator.computeOnServices`.
+Try to replace as much local variable declaration type using the new `var` keyword.
