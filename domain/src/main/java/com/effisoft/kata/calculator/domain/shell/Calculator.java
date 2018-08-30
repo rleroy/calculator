@@ -1,6 +1,6 @@
-package com.effisoft.kata.domain.shell;
+package com.effisoft.kata.calculator.domain.shell;
 
-import com.effisoft.kata.domain.core.*;
+import com.effisoft.kata.calculator.domain.core.*;
 import org.apache.log4j.Logger;
 
 import java.util.Optional;
@@ -33,9 +33,9 @@ public class Calculator implements Runnable {
         };
 
         this.services = Stream.of(
-            new AddiService(),
-            new SubsService(),
-            new MultService(),
+            new AdditionService(),
+            new SubtractionService(),
+            new MultiplicationService(),
             div
         ).collect(Collectors.toSet());
     }

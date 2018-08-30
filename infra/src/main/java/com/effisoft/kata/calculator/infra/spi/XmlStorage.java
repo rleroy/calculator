@@ -1,9 +1,9 @@
-package com.effisoft.kata.infra.spi;
+package com.effisoft.kata.calculator.infra.spi;
 
-import com.effisoft.kata.domain.shell.CalculatorStorage;
-import com.effisoft.kata.infra.spi.generated.ObjectFactory;
-import com.effisoft.kata.infra.spi.generated.Operation;
-import com.effisoft.kata.infra.spi.generated.Storage;
+import com.effisoft.kata.calculator.domain.shell.CalculatorStorage;
+import com.effisoft.kata.calculator.infra.spi.generated.Operation;
+import com.effisoft.kata.calculator.infra.spi.generated.ObjectFactory;
+import com.effisoft.kata.calculator.infra.spi.generated.Storage;
 import org.apache.log4j.Logger;
 
 import javax.xml.bind.JAXBContext;
@@ -18,7 +18,7 @@ public class XmlStorage implements CalculatorStorage {
 
     private static Logger logger = Logger.getLogger(XmlStorage.class);
 
-    private JAXBContext jaxbContext = JAXBContext.newInstance("com.effisoft.kata.infra.spi.generated");
+    private JAXBContext jaxbContext = JAXBContext.newInstance("com.effisoft.kata.calculator.infra.spi.generated");
     private ObjectFactory objFactory = new ObjectFactory();
     private File datafile = Paths.get("storage.xml").toFile();
 

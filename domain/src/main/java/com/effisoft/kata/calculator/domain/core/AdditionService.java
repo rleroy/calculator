@@ -1,8 +1,8 @@
-package com.effisoft.kata.domain.core;
+package com.effisoft.kata.calculator.domain.core;
 
-public class AddiService extends OperationService<Integer> {
+public class AdditionService extends OperationService<Integer> {
 
-    public AddiService() {
+    public AdditionService() {
         super("([0-9]*)\\+([0-9]*)");
     }
 

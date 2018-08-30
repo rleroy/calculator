@@ -1,4 +1,4 @@
-package com.effisoft.kata.domain.core;
+package com.effisoft.kata.calculator.domain.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class SubsService extends OperationService<Integer> {
+public class SubtractionService extends OperationService<Integer> {
 
-    public SubsService() {
+    public SubtractionService() {
         super("([0-9]*)\\-([0-9]*)");
     }
 
