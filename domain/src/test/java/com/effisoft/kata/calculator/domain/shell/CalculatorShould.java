@@ -76,6 +76,7 @@ public class CalculatorShould {
         thread.join();
 
         Assert.assertEquals("5", outputData.removeFirst());
+        Assert.assertTrue(calculator.publisher.isClosed());
     }
 
     @Test
@@ -92,7 +93,6 @@ public class CalculatorShould {
 
         Mockito.verify(calculator, Mockito.times(1)).computeOnServices("1+1");
         Mockito.verify(storage, Mockito.times(1)).store("1+1", "2");
-        Mockito.verify(storage, Mockito.times(2)).retrieve("1+1");
     }
 
     @Test

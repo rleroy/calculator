@@ -1,13 +1,16 @@
 package com.effisoft.kata.calculator.domain.shell;
 
 import com.effisoft.kata.calculator.domain.core.*;
+import com.effisoft.kata.calculator.domain.flow.ConsumerSubscriber;
+import com.effisoft.kata.calculator.domain.core.OperationPublisher;
 import org.apache.log4j.Logger;
 
-import java.util.Optional;
+import java.time.Duration;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.concurrent.SubmissionPublisher;
+import java.util.function.Supplier;
+
+import static java.time.temporal.ChronoUnit.SECONDS;
 
 public class Calculator implements Runnable {
 
@@ -19,6 +22,7 @@ public class Calculator implements Runnable {
 
     Throwable error = null;
     Set<OperationService<Integer>> services;
+    SubmissionPublisher<String> publisher;
 
     public Calculator(CalculatorInput input, CalculatorOutput output, CalculatorStorage storage) {
         this.input = input;
@@ -38,6 +42,18 @@ public class Calculator implements Runnable {
             new MultiplicationService(),
             div
         );
+
+        publisher = new SubmissionPublisher<>();
+        var storageSubscriber = new ConsumerSubscriber<Operation>(
+            item -> storage.store(item.getInput(), item.getOutput())
+        );
+
+        this.services
+            .forEach(service -> {
+                var operationPublisher = new OperationPublisher(service);
+                publisher.subscribe(operationPublisher);
+                operationPublisher.subscribe(storageSubscriber);
+            });
     }
 
     @Override
@@ -54,40 +70,36 @@ public class Calculator implements Runnable {
         while (!"exit".equals(command = input.read())) {
             output.write(compute(command));
         }
+        publisher.close();
     }
 
     String compute(String operation) {
-        String response;
         var result = storage.retrieve(operation);
-        if (result.isPresent()) {
-            response = result.get();
-        } else {
-            response = this.computeOnServices(operation);
-            storage.store(operation, response);
+        if (!result.isPresent()) {
+            computeOnServices(operation);
+            waitUntilAtMost(
+                () -> storage.retrieve(operation).isPresent(),
+                Duration.of(5, SECONDS)
+            );
         }
-        return response;
+        return storage.retrieve(operation).orElse("???");
     }
 
-    String computeOnServices(String operation) {
-        var result = "???";
+    void computeOnServices(String operation) {
+        publisher.submit(operation);
+    }
 
-        for (OperationService<Integer> service : services) {
-            var matcher = service.matcher(operation);
-            if (matcher.matches()) {
-                try {
-                    result = String.valueOf(
-                        service.compute(
-                            Integer.valueOf(matcher.group(1)),
-                            Integer.valueOf(matcher.group(2))
-                        )
-                    );
-                } catch (OperationException e) {
-                    logger.error(e.getMessage(), e);
-                }
-                break;
+    private void waitUntilAtMost(Supplier<Boolean> test, Duration duration) {
+        long start = System.currentTimeMillis();
+        while (
+            !test.get()
+            && (System.currentTimeMillis() - start) < duration.toMillis()
+        ) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                logger.error(e.getMessage(), e);
             }
         }
-
-        return result;
     }
 }

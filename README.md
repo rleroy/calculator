@@ -54,7 +54,3 @@ References :
 - [x] Use the new HTTP Client API (JK9 - JEP 110 / JDK11 - JEP 321).
 - [x] Local-Variable Type Inference (JDK10 - JEP 286).
 - [ ] Use the new Flow API (JDK9 - JEP 266).
-
-### Step 8 : The new Flow API.
-
-JEP 266 introduces a flow API. You can use it to refactor the `Calculator`.
